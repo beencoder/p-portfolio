@@ -75,7 +75,7 @@
 #section3 .ocean, #section6 .ocean {background: #031226;}
 #section4 .ocean {background: #bfcdd9;}
 #section5 .ocean {background: #f1eed8;}
-#section7 .ocean {background: #bfcdd9;}
+#section7 .ocean {background: #031226;}
 .wave {
     background: url(../images/wave01.svg) repeat-x; 
     width: 6400px;
@@ -461,7 +461,7 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    transition: 1.5s linear;
+    transition: 0.6s linear;
     backface-visibility: hidden;
     box-shadow: inset 0 0 4px rgba(0,0,0,0.8); 
 }
@@ -719,7 +719,6 @@
     justify-content: center;
     align-items: center;
     width: 60%;
-    border: 1px solid #000;
 }
 .work_left > div {
     position: absolute;
@@ -746,7 +745,6 @@
 .sec4 .work_right {
     width: 40%;
     margin-left: 7%;
-    border: 1px solid #000;
 }
 .work_right .sec4_mq {
     overflow: hidden;
@@ -821,7 +819,7 @@
     background-color: transparent;
     background-image: linear-gradient(135deg, #222 0%, #222 50%, transparent 50.1%);
     background-size: 0% 100%;
-    transition: 0.7s cubic-bezier(0.67, 0.01, 0.15, 0.98);
+    transition: 0.4s cubic-bezier(0.67, 0.01, 0.15, 0.98);
     font-family: 'Cafe24Dangdanghae';
     font-size: 2.2rem;
     padding: 10px;
