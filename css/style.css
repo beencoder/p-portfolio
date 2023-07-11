@@ -8,10 +8,9 @@
 #section3 { background:#bfcdd9; min-height: 70vw; }
 #section4 { position: relative; background:#f1eed8; }
 #section5 { position: relative; background: #031226; }
-#section6 { position: relative; overflow: hidden; background: #bfcdd9; }
-#section7 { z-index: 101; position: relative; height: 5800px; overflow: hidden; background: linear-gradient(180deg, rgba(3, 18, 38, 1) 15%, rgba(3, 18, 38, 0.8) 40%, rgba(3, 18, 38, 0.6) 60%, rgba(3, 18, 38, 0.4) 80%, rgba(241, 238, 216, 1) 100%); background-size: cover; }
+#section7 { z-index: 101; position: relative; height: 3000px; overflow: hidden; background: linear-gradient(180deg, rgba(3, 18, 38, 1) 15%, rgba(3, 18, 38, 0.8) 40%, rgba(3, 18, 38, 0.6) 60%, rgba(3, 18, 38, 0.4) 80%, rgba(241, 238, 216, 1) 100%); background-size: cover; }
 #section8 { z-index: 100; position: relative; height: 550vw; visibility: hidden; pointer-events: none; overflow: hidden; background: #f1eed8; }
-#section9 { position: relative; overflow: hidden; height: 6000px; padding-top: 4200px; background: linear-gradient(0deg, rgba(3, 18, 38, 1) 10%, rgba(3, 18, 38, 0.8) 25%, rgba(3, 18, 38, 0.6) 50%, rgba(3, 18, 38, 0.4) 65%, rgba(241, 238, 216, 1) 80%); background-size: cover; }
+#section9 { position: relative; overflow: hidden; height: 6000px; background: linear-gradient(0deg, rgba(3, 18, 38, 1) 10%, rgba(3, 18, 38, 0.8) 25%, rgba(3, 18, 38, 0.6) 50%, rgba(3, 18, 38, 0.4) 65%, rgba(241, 238, 216, 1) 80%); background-size: cover; }
 #section10 { position: relative; background: #031226; }
 
 
@@ -72,7 +71,7 @@
 
 /* ocean */
 .ocean {position: relative; width: 100vw;}
-#section3 .ocean, #section6 .ocean {background: #031226;}
+#section3 .ocean {background: #031226;}
 #section4 .ocean {background: #bfcdd9;}
 #section5 .ocean {background: #f1eed8;}
 #section7 .ocean {background: #031226;}
@@ -1110,163 +1109,6 @@
 .mBtn:hover:after { left: -39%; }
 
 
-/* ----- section6 ----- */
-.sec6 {
-    padding: 135px 0 285px; 
-    overflow: hidden;
-}
-.sec6 .sec6_txt {
-    text-align: center;
-    padding-bottom: 140px;
-}
-.sec6_txt p {
-    font-family: 'Cafe24Dangdanghae';
-    font-size: 3.7rem;
-    text-transform: uppercase;
-    color: #031226;
-    opacity: 0;
-    transform: translate(0, -50px);
-}
-.sec6_txt h3 {
-    position: relative;
-    font-size: 22rem;
-    font-family: 'Imbue', serif;
-    text-transform: uppercase;
-    opacity: 0;
-}
-.sec6_txt h3 span:last-child:before {
-    content: '';
-    position: absolute;
-    top: 0; right: -152px;
-    width: 110px; height: 110px;
-    background: url(../images/browser.svg) no-repeat;
-    background-size: contain;
-    animation: balloon 1s alternate infinite;
-}
-.sec6_txt h3 span {
-    display: inline-block;
-    transform: translateY(100px);
-    opacity: 0; 
-}
-
-.sec6 .tabBar {
-    background: #8babc4; 
-    font-family: 'CookieRunOTF-Bold';
-    border-radius: 60px; 
-    margin-bottom: 76px;
-    opacity: 0;
-    transform: translateX(-100px);
-}
-.sec6 .tabBar ul {
-    display: flex; 
-    height: 60px;
-}
-.sec6 .tabBar ul li {
-    flex-basis: 33.333%; 
-    color: #031226; 
-    text-align: center; 
-    display: inline-block; 
-    line-height: 60px; 
-    font-size: 3rem; 
-    transition: 0.2s;
-}
-.sec6 .tabBar ul li:hover { color: #f1eed8; }
-.sec6 .tabBar ul li.show {
-    color: #f1eed8;
-    background: #031226; 
-    border-radius: 60px; 
-}
-
-.sec6 .contBox {
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 25px;
-    opacity: 0;
-    transform: translateX(100px);
-}
-
-.hover_wrap .effect {
-    position: relative; 
-    perspective: 1000px;
-}
-.hover_wrap .effect img {
-    width: 100%; height: 450px; 
-    object-fit: cover;
-    border-radius: 25px;
-}
-.hover_wrap .effect .front {
-    position: relative; 
-    left: 0; top: 0; 
-    z-index: 10; 
-    transform-style: preserve-3d;
-}
-.hover_wrap .effect .back {
-    position: absolute; 
-    left: 0; top: 0; 
-    transform-style: preserve-3d;
-}
-.hover_wrap .effect .back a {
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%) translatez(80px);
-    border-radius: 10px;
-    color: #222;
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 15px 30px;
-    background: rgba(255, 255, 255, 0.7);
-    font-family: 'CookieRunOTF-Bold';
-    text-transform: uppercase;
-    transition: 0.2s;
-}
-.hover_wrap .effect .back a:hover {
-    color: #f2f2f2;
-    background: rgba(0, 0, 0, 0.8);
-}
-.hover_wrap .effect span {
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%) translatez(80px);
-    text-align: center;
-    backface-visibility: hidden;
-    color: #000;
-}
-.hover_wrap .effect .front .tit {
-    font-size: 2.7rem; 
-    top: 35%; 
-    font-family: 'ELAND_Nice_M';
-}
-.hover_wrap .effect .front .desc {
-    font-size: 1.9rem; 
-    font-family: 'Cafe24Dangdanghae'; 
-    width: 62%; top: 65%;
-    line-height: 1.5;
-}  
-.hover_wrap .effect.hover .front {
-    transform: rotateY(0deg);
-    transition: transform 1s;
-    backface-visibility: hidden;
-}  
-.hover_wrap .effect.hover:hover .front { transform: rotateY(180deg); }  
-.hover_wrap .effect.hover .back {
-    transform: rotateY(-180deg);
-    transition: transform 1s;
-    backface-visibility: hidden;
-}  
-.hover_wrap .effect.hover:hover .back { transform: rotateY(0deg); }
-.hover_wrap:nth-child(odd):not(.hover_wrap:nth-child(7)) .front:before, .hover_wrap:nth-child(4) .front:before, .hover_wrap:nth-child(8) .front:before {
-    content: '';
-    width: 100%; height: 99.6%;
-    position: absolute;
-    top: 0; left: 0;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 25px;
-}
-
-
-/* ----- section7 ----- */
-
-
 /* ----- section8 ----- */
 #section8.visible {
     visibility: visible;
@@ -1800,20 +1642,10 @@
 }
 
 
-/* ----- 1290px ----- */
-@media (max-width: 1289px){
-    .mainWrap .main #moon {  }
-}
-
-
 @media (max-width: 1110px){
     .sec6 .contBox {grid-template-columns: repeat(2,1fr);}
 }
 
-
-@media (max-width: 1023px){
-    
-}
 @media (max-width: 767px){
     .container { width:90%; }
     #header { padding: 33px; }
@@ -1932,21 +1764,5 @@
     textarea{ width: 70%; font-size: 2.5vw;}
     #form form button{ width: 70%; font-size: 2.5vw; padding:4vw 0; line-height: 0;}
     
-}
-@media (max-width: 600px){
-    
-}
-
-
-
-@media (max-width: 640px) and (min-width: 320px){
-    .sec6 {padding: 5rem 0 13rem 0;}
-    .sec6 .tabBar {margin-bottom: 2.5rem;}
-    .sec6 .tabBar ul {height: 2.5rem;}
-    .sec6 .tabBar ul li {line-height: 2.5rem; font-size: .9rem;}
-    .sec6 .contBox {grid-template-columns: repeat(1, 1fr);}
-    .sec6 .contBox .hover_wrap .effect img {height: 12rem;}
-    .sec6 .contBox .hover_wrap .front .tit {font-size: 1.2rem;}
-    .sec6 .contBox .hover_wrap .front .desc {font-size: 0.8rem;}
 }
 

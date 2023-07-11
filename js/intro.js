@@ -1,13 +1,13 @@
 function imagesProgress() {
-  let container = $("#progress"),
-    progressText = container.find(".progress-text"),
-    imgLoad = imagesLoaded("body"),
+  let container = $('#progress'),
+    progressText = container.find('.progress-text'),
+    imgLoad = imagesLoaded('body'),
     imgTotal = imgLoad.images.length,
     imgLoaded = 0,
     imgCurrent = 0,
-    progressTimer = setInterval(updateProgress, 3000 / 60);
+    progressTimer = setInterval(updateProgress, 3000 / 100);
 
-  imgLoad.on("progress", function () {
+  imgLoad.on('progress', function () {
     imgLoaded++;
   });
 
@@ -15,24 +15,24 @@ function imagesProgress() {
     let target = (imgLoaded / imgTotal) * 100;
 
     imgCurrent += (target - imgCurrent) * 0.1;
-    progressText.text(Math.floor(imgCurrent) + "%");
+    progressText.text(Math.floor(imgCurrent) + '%');
 
     if (imgCurrent >= 100) {
       clearInterval(progressTimer);
       container
-        .animate({ opacity: "0" }, 1500, "easeInOutQuint")
-        .animate({ top: "-100%" }, 1500);
+        .animate({ opacity: '0' }, 1500, 'easeInOutQuint')
+        .animate({ top: '-100%' }, 1500);
 
-      gsap.to(".main-left h2 span", {
+      gsap.to('.main-left h2 span', {
         opacity: 1,
         y: 0,
-        duration: 3.5,
-        delay: 1.5,
+        duration: 2.5,
+        delay: 1,
         stagger: 0.1,
-        ease: "elastic.out(1, 0.3)",
+        ease: 'elastic.out(1, 0.3)',
       });
-      gsap.to("#moon", { opacity: 1, y: 0, duration: 1.5, delay: 3.5 });
-      gsap.to("#header", { opacity: 1, y: 0, duration: 0.8, delay: 4.5 });
+      gsap.to('#moon', { opacity: 1, y: 0, duration: 1, delay: 2 });
+      gsap.to('#header', { opacity: 1, y: 0, duration: 0.4, delay: 2.5 });
     }
 
     if (imgCurrent > 99.9) {
@@ -43,13 +43,13 @@ function imagesProgress() {
 imagesProgress();
 
 //Cursor
-let cursor = $(".cursor");
-let curBasic = $(".cur");
-let curPointer = $(".pointer");
+const cursor = document.querySelector('.cursor');
+let curBasic = $('.cur');
+let curPointer = $('.pointer');
 
-$(".cursor img").hide();
+$('.cursor img').hide();
 
-$("body").hover(
+$('body').hover(
   function () {
     curBasic.show();
   },
@@ -58,7 +58,7 @@ $("body").hover(
   }
 );
 
-$("a, button, .sec2 input, .mImg, .tabBar > ul").hover(
+$('a, button, .sec2 input, .mImg, .tabBar > ul').hover(
   function () {
     curPointer.show();
     curBasic.hide();
@@ -69,40 +69,43 @@ $("a, button, .sec2 input, .mImg, .tabBar > ul").hover(
   }
 );
 
-$(document).mousemove(function (e) {
-  cursor.css({ left: e.pageX + 3, top: e.pageY });
-});
+function animateCursor(e) {
+  cursor.style.left = `${e.pageX}px`;
+  cursor.style.top = `${e.pageY - scrollY}px`;
+}
+window.addEventListener('mousemove', animateCursor);
+window.addEventListener('scroll', animateCursor);
 
-$(".splice").each(function () {
+$('.splice').each(function () {
   let txt = $(this).text();
-  let split = txt.split("").join("</span><span aria-hidden='true'>");
-  split = "<span aria-hidden='true'>" + split + "</span>";
-  $(this).html(split).attr("aria-label", txt);
+  let split = txt.split('').join("</span><span aria-hidden='true'>");
+  split = "<span aria-hidden='true'>" + split + '</span>';
+  $(this).html(split).attr('aria-label', txt);
 });
 
 //counter
 function counter() {
-  if ($(".skill_wrap .count").size()) {
-    $c = $(".skill_wrap .count");
+  if ($('.skill_wrap .count').size()) {
+    $c = $('.skill_wrap .count');
 
     $c.each(function () {
       const $this = $(this);
-      $this.data("target", parseInt($this.html()));
-      $this.data("counted", false);
-      $this.html("0");
+      $this.data('target', parseInt($this.html()));
+      $this.data('counted', false);
+      $this.html('0');
     });
 
     $(window)
-      .on("scroll", function () {
+      .on('scroll', function () {
         const speed = 5000;
 
         $c.each(function (i) {
           const $t = $(this);
           if (
-            !$t.data("counted") &&
+            !$t.data('counted') &&
             $(window).scrollTop() + $(window).height() >= $t.offset().top
           ) {
-            $t.data("counted", true);
+            $t.data('counted', true);
 
             $t.animate(
               {
@@ -112,22 +115,22 @@ function counter() {
                 duration: speed,
                 step: function (now) {
                   const $this = $(this);
-                  const val = Math.round($this.data("target") * now);
+                  const val = Math.round($this.data('target') * now);
                   $this.html(val);
                 },
-                easing: "easeInOutQuart",
+                easing: 'easeInOutQuart',
               }
             );
 
             // easy pie
-            $(".pie").easyPieChart({
-              barColor: "#fff",
-              trackColor: "#999",
-              scaleColor: "#999",
+            $('.pie').easyPieChart({
+              barColor: '#fff',
+              trackColor: '#999',
+              scaleColor: '#999',
               scaleLength: 4,
               lineWidth: 4,
               size: 180,
-              lineCap: "round",
+              lineCap: 'round',
               animate: {
                 duration: speed,
                 enabled: true,
@@ -136,33 +139,33 @@ function counter() {
           }
         });
       })
-      .triggerHandler("scroll");
+      .triggerHandler('scroll');
   }
 }
 counter();
 
-$("#section4")
-  .find(".pgdn")
+$('#section4')
+  .find('.pgdn')
   .each(function () {
     $(this).mouseover(function () {
       $(this)
-        .parents(".works")
-        .find(".mac")
-        .find(".imgBx")
-        .css("background-position", "bottom");
+        .parents('.works')
+        .find('.mac')
+        .find('.imgBx')
+        .css('background-position', 'bottom');
     });
     $(this).mouseout(function () {
       $(this)
-        .parents(".works")
-        .find(".mac")
-        .find(".imgBx")
-        .css("background-position", "top");
+        .parents('.works')
+        .find('.mac')
+        .find('.imgBx')
+        .css('background-position', 'top');
     });
   });
 
 // //탭 바
-let tabBar = $(".tabBar > ul > li");
-let contBox = $(".contBox");
+let tabBar = $('.tabBar > ul > li');
+let contBox = $('.contBox');
 
 contBox.hide().eq(0).show();
 
@@ -171,29 +174,29 @@ tabBar.click(function (e) {
   let target = $(this);
   let index = target.index();
 
-  tabBar.removeClass("show");
-  target.addClass("show");
-  contBox.css("display", "none");
-  contBox.eq(index).css({ display: "block", display: "grid" });
+  tabBar.removeClass('show');
+  target.addClass('show');
+  contBox.css('display', 'none');
+  contBox.eq(index).css({ display: 'block', display: 'grid' });
 });
 
-const $section7 = $("#section7");
-const $section8 = $("#section8");
+const $section7 = $('#section7');
+const $section8 = $('#section8');
 
 $(window).scroll(function () {
   const wScroll = $(this).scrollTop();
 
   if (wScroll > $section7.offset().top) {
-    $section8.addClass("visible");
+    $section8.addClass('visible');
   } else {
-    $section8.removeClass("visible");
+    $section8.removeClass('visible');
   }
 
   const offsetLeft = wScroll - $section8.offset().top;
   if (wScroll > $section8.offset().top + 1000) {
-    gsap.to($section8.find(".sec8"), { left: -offsetLeft + 1000 + "px" });
+    gsap.to($section8.find('.sec8'), { left: -offsetLeft + 1000 + 'px' });
   } else {
-    $section8.find(".sec8").css("left", +0 + "px");
+    $section8.find('.sec8').css('left', +0 + 'px');
   }
 });
 
@@ -201,90 +204,90 @@ $(window).scroll(function () {
 $(window).scroll(function () {
   const scrollTop = $(window).scrollTop() + $(window).height() / 3;
 
-  $("section").each(function () {
+  $('section').each(function () {
     if (scrollTop > $(this).offset().top) {
-      $(this).addClass("active");
+      $(this).addClass('active');
     } else {
-      $(this).removeClass("active");
+      $(this).removeClass('active');
     }
   });
-  $(".arrow1").each(function () {
-    if (scrollTop > $("#section8").offset().top) {
-      $(this).parents("#section7").removeClass("active");
+  $('.arrow1').each(function () {
+    if (scrollTop > $('#section8').offset().top) {
+      $(this).parents('#section7').removeClass('active');
     }
   });
-  $(".arrow2").each(function () {
-    if (scrollTop > $("#section10").offset().top) {
-      $(this).parents("#section9").removeClass("active");
+  $('.arrow2').each(function () {
+    if (scrollTop > $('#section10').offset().top) {
+      $(this).parents('#section9').removeClass('active');
     }
   });
 }); //--x--each section scroll
 
 //modal
-$(".ani1 .aniBtn").click(function () {
-  $("#modal").fadeIn();
-  $("#modal .modal").css("display", "none");
-  $("#modal .modal1").fadeIn();
+$('.ani1 .aniBtn').click(function () {
+  $('#modal').fadeIn();
+  $('#modal .modal').css('display', 'none');
+  $('#modal .modal1').fadeIn();
 });
-$(".ani2 .aniBtn").click(function () {
-  $("#modal").fadeIn();
-  $("#modal .modal").css("display", "none");
-  $("#modal .modal2").fadeIn();
+$('.ani2 .aniBtn').click(function () {
+  $('#modal').fadeIn();
+  $('#modal .modal').css('display', 'none');
+  $('#modal .modal2').fadeIn();
 });
-$(".ani3 .aniBtn").click(function () {
-  $("#modal").fadeIn();
-  $("#modal .modal").css("display", "none");
-  $("#modal .modal3").fadeIn();
+$('.ani3 .aniBtn').click(function () {
+  $('#modal').fadeIn();
+  $('#modal .modal').css('display', 'none');
+  $('#modal .modal3').fadeIn();
 });
-$(".ani4 .aniBtn").click(function () {
-  $("#modal").fadeIn();
-  $("#modal .modal").css("display", "none");
-  $("#modal .modal4").fadeIn();
+$('.ani4 .aniBtn').click(function () {
+  $('#modal').fadeIn();
+  $('#modal .modal').css('display', 'none');
+  $('#modal .modal4').fadeIn();
 });
 
-$(".close").click(function (e) {
+$('.close').click(function (e) {
   e.preventDefault();
-  $("#modal, .modal").fadeOut();
+  $('#modal, .modal').fadeOut();
 });
 
-const surface = $(".surface");
-const car = $(".car");
-const carImg = $(".carImg");
-const driveBtn = $(".driveBtn");
-const lightBtn = $(".lightBtn");
+const surface = $('.surface');
+const car = $('.car');
+const carImg = $('.carImg');
+const driveBtn = $('.driveBtn');
+const lightBtn = $('.lightBtn');
 let light = false;
 let drive = false;
 
-$(document).on("keypress", function (e) {
+$(document).on('keypress', function (e) {
   console.log(e.which);
   if (e.which == 13 || e.which == 32) {
-    surface.toggleClass("btMove");
-    car.toggleClass("carMove");
+    surface.toggleClass('btMove');
+    car.toggleClass('carMove');
   }
 });
 
 driveBtn.click(function () {
   if (!drive) {
-    $(this).text("Stop");
-    surface.css("animation-play-state", "paused");
-    car.css("animation-play-state", "paused");
+    $(this).text('Stop');
+    surface.css('animation-play-state', 'paused');
+    car.css('animation-play-state', 'paused');
     drive = true;
   } else {
-    $(this).text("Drive");
-    surface.css("animation-play-state", "running");
-    car.css("animation-play-state", "running");
+    $(this).text('Drive');
+    surface.css('animation-play-state', 'running');
+    car.css('animation-play-state', 'running');
     drive = false;
   }
 });
 
 lightBtn.click(function () {
   if (!light) {
-    $(this).text("Headlight Off");
-    carImg.attr("src", "images/caravan.png").css("width", "221");
+    $(this).text('Headlight Off');
+    carImg.attr('src', 'images/caravan.png').css('width', '221');
     light = true;
   } else {
-    $(this).text("Headlight On");
-    carImg.attr("src", "images/caravan_light.png").css("width", "340");
+    $(this).text('Headlight On');
+    carImg.attr('src', 'images/caravan_light.png').css('width', '340');
     light = false;
   }
 });

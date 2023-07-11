@@ -41,7 +41,7 @@ body {overflow-x: hidden;}
 a {color: #031226; text-decoration: none;}
 
 /* 폰트 초기화 */
-html {font-size: 0.625em; margin-top: -10px;}
+html {font-size: 0.625em;}
 body, input, textarea, select, button, table {font-family: 'Cafe24Oneprettynight'; color: #f2f2f2; line-height: 1;}
 
 /* 폰트 스타일 초기화 */
@@ -79,5 +79,4 @@ video, img {width: 100%;}
 .mt50 {margin-top: 50px !important;}
 
 /* cursor */
-.cursor {position: absolute; top: 0; left: 0; z-index: 9999;}
-.cursor img {width: 5rem;}
+.cursor {position: fixed; width: 5rem; height: 5rem; z-index: 9999; pointer-events: none;}
